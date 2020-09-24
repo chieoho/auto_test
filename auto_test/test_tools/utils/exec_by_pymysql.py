@@ -14,7 +14,8 @@ class ExeWithPymysql(SqlExecutor):
         self.connection = None
         super().__init__()
 
-    def connect(self, host: str, user: str, password: str, db: str, port=3306, charset='utf8mb4') -> bool:
+    def connect(self, host: str, user: str, password: str, db=None,
+                port=3306, charset='utf8mb4') -> bool:
         try:
             self.connection = pymysql.connect(host=host,
                                               port=port,
@@ -28,7 +29,24 @@ class ExeWithPymysql(SqlExecutor):
             return False
 
     def change(self, sql):
-        pass
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute(sql)
+            self.connection.commit()
+        except Exception as exe_err:
+            print(exe_err)
+            self.connection.rollback()
 
-    def query(self, sql) -> str:
-        pass
+    def query(self, sql) -> list:
+        cursor = self.connection.cursor()
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        return results
+
+    def close(self) -> bool:
+        try:
+            self.connection.close()
+            return True
+        except Exception as close_err:
+            print(close_err)
+            return False

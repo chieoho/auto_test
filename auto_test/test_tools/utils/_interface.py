@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 @file: _interface.py
-@desc: 工具层与操作系统交互接口
+@desc: 工具层与主机交互接口
 @author: Jaden Wu
 @time: 2020/9/24 11:33
 """
@@ -36,6 +36,9 @@ class SqlExecutor(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def query(self, sql) -> str:
+    def query(self, sql) -> list:
         pass
 
+    @abstractmethod
+    def close(self) -> bool:
+        pass
