@@ -5,8 +5,8 @@
 @author: Jaden Wu
 @time: 2020/9/22 9:49
 """
-from test_case.entity import TestCase
-from tools.gen_data.py_gen_data import PyGenData as GenDate
+from auto_test.test_case.entity import TestCase
+from auto_test.test_tools.gen_data.py_gen_data import PyGenData as GenDate
 
 
 class TestCaseScript(TestCase):
