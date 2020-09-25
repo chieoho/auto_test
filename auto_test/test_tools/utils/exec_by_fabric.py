@@ -7,6 +7,7 @@
 """
 import os
 from fabric.connection import Connection
+from invoke import Responder
 from auto_test.test_tools.utils._interface import CmdExecutor
 
 
@@ -23,16 +24,24 @@ class ExecutorWithFabric(CmdExecutor):
             print(conn_err)
             return False
 
-    def run(self, cmd: str) -> tuple:
-        result = self.connection.run(cmd, warn=True, hide=True, encoding='utf-8')
+    def run(self, cmd: str, watchers=None) -> tuple:
+        if watchers is None:
+            watchers = []
+        else:
+            watchers = list(map(lambda r: Responder(*r), watchers))
+        result = self.connection.run(cmd, warn=True, hide=True, encoding='utf-8', pty=True, watchers=watchers)
         if result.ok:
             return True, result.stdout
         else:
             return False, ''
 
-    def local(self, cmd: str) -> tuple:
+    def local(self, cmd: str, watchers=None) -> tuple:
+        if watchers is None:
+            watchers = []
+        else:
+            watchers = list(map(lambda r: Responder(*r), watchers))
         conn = Connection('local')
-        result = conn.local(cmd, warn=True, hide=True, env=os.environ)
+        result = conn.local(cmd, warn=True, hide=True, pty=True, env=os.environ, watchers=watchers)
         conn.close()
         if result.ok:
             return True, result.stdout
@@ -47,3 +56,13 @@ class ExecutorWithFabric(CmdExecutor):
         except Exception as close_err:
             print(close_err)
             return False
+
+
+if __name__ == '__main__':
+    executor = ExecutorWithFabric()
+    executor.connect('192.168.66.21', user='root', password='password')
+    resp1 = (r'Enter password:', 'anyun100\n')
+    resp2 = (r'MariaDB', 'quit\n')
+    ok, out = executor.run('mysql -umetadata -p', watchers=[resp1, resp2])
+    print(ok)
+    print(out)

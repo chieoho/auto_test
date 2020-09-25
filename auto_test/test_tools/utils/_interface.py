@@ -14,7 +14,7 @@ class CmdExecutor(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def run(self, cmd: str) -> tuple:
+    def run(self, cmd: str, watchers: list) -> tuple:
         pass
 
     @abstractmethod
