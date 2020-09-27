@@ -29,3 +29,7 @@ def test_local_with_winpty():
 
     ok, outs = executor.run('notexistcmd')
     assert ok is False
+
+    w1 = ('6379', 'Ctrl-C')
+    ok, outs = executor.run('redis-cli', watchers=[w1])
+    assert ok is False

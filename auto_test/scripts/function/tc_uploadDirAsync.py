@@ -22,7 +22,7 @@ class TestCaseScript(TestCase):
     def body(self):
         executor = LocalWithWinpty()
         w1 = ('请输入指令', r'uploadDirAsync:D:\mc-data\4,/dir50')
-        w2 = ('null', 'taskkill /f /im java.exe')
+        w2 = ('null', 'Ctrl-C')
         ok, outs = executor.run(r'java -jar D:\mcs\agent\mc-agent-0.0.1-SNAPSHOT.jar', watchers=[w1, w2])
         print(ok, outs)
         if ok and ('Success' in outs) or ('ok' in outs):

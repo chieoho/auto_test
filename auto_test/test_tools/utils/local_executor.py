@@ -28,19 +28,23 @@ class LocalWithWinpty(LocalExecutor):
                     if watchers:
                         for pattern, ins in watchers:
                             if re.findall(pattern, outs):
-                                proc.write(ins+'\r\n')
+                                if ins == 'Ctrl-C':
+                                    proc.sendintr()
+                                else:
+                                    proc.write(ins+'\r\n')
                                 break
             ok = True if proc.exitstatus == 0 else False
-            proc.close()
-            del proc
         except Exception as run_err:
             print(run_err)
             ok = False
+        finally:
+            proc.close()
+            del proc
         return ok, all_outs
 
 
 if __name__ == '__main__':
     executor = LocalWithWinpty()
-    w = ('information', 'exit()')
-    ok_, outs_ = executor.run('python', watchers=[w])
+    w1 = ('6379', 'Ctrl-C')
+    ok_, outs_ = executor.run('redis-cli', watchers=[w1])
     print(ok_, outs_)
