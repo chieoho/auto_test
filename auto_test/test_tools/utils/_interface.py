@@ -8,7 +8,7 @@
 from abc import ABCMeta, abstractmethod
 
 
-class CmdExecutor(metaclass=ABCMeta):
+class RemoteExecutor(metaclass=ABCMeta):
     @abstractmethod
     def connect(self, host: str, port: int, user: str, password: str) -> bool:
         pass
@@ -18,11 +18,13 @@ class CmdExecutor(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def local(self, cmd: str) -> tuple:
+    def close(self) -> bool:
         pass
 
+
+class LocalExecutor(metaclass=ABCMeta):
     @abstractmethod
-    def close(self) -> bool:
+    def run(self, cmd: str, watchers: list) -> tuple:
         pass
 
 

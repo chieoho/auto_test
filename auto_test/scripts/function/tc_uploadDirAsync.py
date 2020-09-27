@@ -6,7 +6,7 @@
 @time: 2020/9/25 10:28
 """
 from auto_test.test_case.entity import TestCase
-from auto_test.test_tools.utils.exec_by_fabric import ExecutorWithFabric
+from auto_test.test_tools.utils.local_executor import LocalWithWinpty
 
 
 class TestCaseScript(TestCase):
@@ -20,11 +20,12 @@ class TestCaseScript(TestCase):
         return True
 
     def body(self):
-        executor = ExecutorWithFabric()
-        resp1 = ('请输入指令', r'uploadDirAsync:D:\mc-data\4,/dir50')
-        resp2 = ('null', 'taskkill /f /im java.exe')
-        ok, out = executor.local(r'java -jar D:\mcs\agent\mc-agent-0.0.1-SNAPSHOT.jar', watchers=[resp1, resp2])
-        if ok and ('Success' in out) or ('ok' in out):
+        executor = LocalWithWinpty()
+        w1 = ('请输入指令', r'uploadDirAsync:D:\mc-data\4,/dir50')
+        w2 = ('null', 'taskkill /f /im java.exe')
+        ok, outs = executor.run(r'java -jar D:\mcs\agent\mc-agent-0.0.1-SNAPSHOT.jar', watchers=[w1, w2])
+        print(ok, outs)
+        if ok and ('Success' in outs) or ('ok' in outs):
             return True
         else:
             return False

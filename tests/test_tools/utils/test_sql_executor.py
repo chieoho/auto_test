@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-@file: test_exec_by_fabric.py
+@file: test_remote_executor.py
 @desc:
 @author: Jaden Wu
 @time: 2020/9/24 21:39
 """
 import sqlite3
-from auto_test.test_tools.utils.exec_by_pymysql import ExeWithPymysql
+from auto_test.test_tools.utils.sql_executor import ExeWithPymysql
 
 
 def test_change_and_query():

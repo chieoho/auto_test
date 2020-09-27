@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-@file: exec_by_pymysql.py
+@file: sql_executor.py
 @desc:
 @author: Jaden Wu
 @time: 2020/9/24 17:10
@@ -29,6 +29,11 @@ class ExeWithPymysql(SqlExecutor):
             return False
 
     def change(self, sql):
+        """
+        增，删，改都用此方法
+        :param sql:
+        :return:
+        """
         cursor = self.connection.cursor()
         try:
             cursor.execute(sql)
