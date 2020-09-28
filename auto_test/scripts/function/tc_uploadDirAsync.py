@@ -5,11 +5,11 @@
 @author: Jaden Wu
 @time: 2020/9/25 10:28
 """
-from auto_test.test_case.entity import TestCase
-from auto_test.test_tools.utils.local_executor import LocalWithWinpty
+from auto_test.test_case.entity import TCEntity
+from auto_test.test_tools.base.local_executor import LocalWithWinpty as Local
 
 
-class TestCaseScript(TestCase):
+class TestCase(TCEntity):
     """
     用例：异步上传目录
     """
@@ -20,12 +20,12 @@ class TestCaseScript(TestCase):
         return True
 
     def body(self):
-        executor = LocalWithWinpty()
+        local = Local()
         w1 = ('请输入指令', r'uploadDirAsync:D:\mc-data\4,/dir50')
         w2 = ('null', 'Ctrl-C')
-        ok, outs = executor.run(r'java -jar D:\mcs\agent\mc-agent-0.0.1-SNAPSHOT.jar', watchers=[w1, w2])
-        print(ok, outs)
-        if ok and ('Success' in outs) or ('ok' in outs):
+        _, outs = local.run(r'java -jar D:\mcs\agent\mc-agent-0.0.1-SNAPSHOT.jar', watchers=[w1, w2])
+        print(outs)
+        if ('Success' in outs) or ('ok' in outs):
             return True
         else:
             return False
@@ -35,9 +35,10 @@ class TestCaseScript(TestCase):
 
 
 if __name__ == '__main__':
-    tc_script = TestCaseScript()
-    tc_result, _ = tc_script.run()
+    tc = TestCase()
+    tc_result, _ = tc.run()
+    test_case_name = __file__.split('/')[-1][:-len('.py')]
     if tc_result is True:
-        print('用例tc_uploadDirAsync执行成功')
+        print(f'用例{test_case_name}执行成功')
     else:
-        print('用例tc_uploadDirAsync执行失败')
+        print(f'用例{test_case_name}执行失败')

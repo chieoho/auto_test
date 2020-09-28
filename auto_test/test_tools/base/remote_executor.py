@@ -7,7 +7,7 @@
 """
 from fabric.connection import Connection
 from invoke import Responder
-from auto_test.test_tools.utils._interface import RemoteExecutor
+from auto_test.test_tools.base._interface import RemoteExecutor
 
 
 class RemoteWithFabric(RemoteExecutor):

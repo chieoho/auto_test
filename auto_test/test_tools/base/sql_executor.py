@@ -6,7 +6,7 @@
 @time: 2020/9/24 17:10
 """
 import pymysql
-from auto_test.test_tools.utils._interface import SqlExecutor
+from auto_test.test_tools.base._interface import SqlExecutor
 
 
 class ExeWithPymysql(SqlExecutor):

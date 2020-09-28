@@ -5,7 +5,7 @@
 @author: Jaden Wu
 @time: 2020/9/27 9:46
 """
-from auto_test.test_tools.utils.local_executor import LocalWithWinpty
+from auto_test.test_tools.base.local_executor import LocalWithWinpty
 
 
 def test_local_with_winpty():

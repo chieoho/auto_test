@@ -6,7 +6,7 @@
 @time: 2020/9/24 21:39
 """
 import sqlite3
-from auto_test.test_tools.utils.sql_executor import ExeWithPymysql
+from auto_test.test_tools.base.sql_executor import ExeWithPymysql
 
 
 def test_change_and_query():

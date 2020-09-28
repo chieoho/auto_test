@@ -5,7 +5,7 @@
 @author: Jaden Wu
 @time: 2020/9/24 14:33
 """
-from auto_test.test_tools.utils.remote_executor import RemoteWithFabric
+from auto_test.test_tools.base.remote_executor import RemoteWithFabric
 
 
 def test_remote_with_fabric():

@@ -8,7 +8,7 @@
 from abc import ABCMeta, abstractmethod
 
 
-class TestCase(metaclass=ABCMeta):
+class TCEntity(metaclass=ABCMeta):
     @abstractmethod
     def precondition(self) -> bool:
         pass

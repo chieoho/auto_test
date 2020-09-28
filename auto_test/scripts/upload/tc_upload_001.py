@@ -5,11 +5,11 @@
 @author: Jaden Wu
 @time: 2020/9/22 9:49
 """
-from auto_test.test_case.entity import TestCase
+from auto_test.test_case.entity import TCEntity
 from auto_test.test_tools.gen_data.py_gen_data import PyGenData as GenDate
 
 
-class TestCaseScript(TestCase):
+class TestCase(TCEntity):
     """
     用例：文件上传
     一、前提条件
@@ -38,6 +38,6 @@ class TestCaseScript(TestCase):
 
 
 if __name__ == '__main__':
-    tc_script = TestCaseScript()
+    tc_script = TestCase()
     result = tc_script.run()
     print(result)
