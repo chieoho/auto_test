@@ -3,3 +3,4 @@ pytest==6.0.2
 PyMySQL==0.10.1
 invoke==1.4.1
 pywinpty==0.5.7
+requests==2.24.0
