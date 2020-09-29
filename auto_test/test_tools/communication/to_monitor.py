@@ -3,7 +3,7 @@
 requests to monitor
 """
 
-from tests.test_tools.communication.poster import HttpPoster
+from auto_test.test_tools.communication.poster import HttpPoster
 
 
 class MonitorPoster(HttpPoster):
