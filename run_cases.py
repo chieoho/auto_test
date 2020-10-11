@@ -16,13 +16,14 @@ def main():
         module_name = tcs[len('.\\'): -len('.py')].replace(os.sep, '.')
         tc_model = importlib.import_module(module_name)
         if hasattr(tc_model, 'TestCase'):
+            test_case_name = module_name.split('.')[-1]
+            print(f'用例{test_case_name}开始运行')
             tc = tc_model.TestCase()
             tc_result, restore_env_res = tc.run()
-            test_case_name = module_name.split('.')[-1]
             if tc_result is True:
-                print(f'用例{test_case_name}执行成功')
+                print(f'用例{test_case_name}运行成功')
             else:
-                print(f'用例{test_case_name}执行失败')
+                print(f'用例{test_case_name}运行失败')
             if restore_env_res is False:
                 print(f'用例{test_case_name}恢复环境失败，连跑终止。')
                 break
