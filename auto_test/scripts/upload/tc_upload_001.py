@@ -5,11 +5,11 @@
 @author: Jaden Wu
 @time: 2020/9/22 9:49
 """
-from auto_test.test_case.entity import TCEntity
+from auto_test.entities.testcase_script import TCSEntity
 from auto_test.test_tools.gen_data.py_gen_data import PyGenData as GenDate
 
 
-class TestCase(TCEntity):
+class TestCase(TCSEntity):
     """
     用例：文件上传
     一、前提条件

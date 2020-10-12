@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 @file: _interface.py
-@desc: 工具层与主机交互接口
+@desc: 工具层与系统交互接口
 @author: Jaden Wu
 @time: 2020/9/24 11:33
 """
