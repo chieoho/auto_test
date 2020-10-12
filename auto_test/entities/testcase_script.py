@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-@file: entity.py
+@file: testcase_script.py
 @desc:
 @author: Jaden Wu
 @time: 2020/9/22 9:27
@@ -8,7 +8,10 @@
 from abc import ABCMeta, abstractmethod
 
 
-class TCEntity(metaclass=ABCMeta):
+class TCSEntity(metaclass=ABCMeta):
+    """
+    testcase script entity
+    """
     @abstractmethod
     def precondition(self) -> bool:
         pass
