@@ -5,11 +5,11 @@
 @author: Jaden Wu
 @time: 2020/9/25 10:28
 """
-from auto_test.test_case.entity import TCEntity
+from auto_test.entities.testcase_script import TCSEntity
 from auto_test.test_tools.base.local_executor import LocalWithWinpty as Local
 
 
-class TestCase(TCEntity):
+class TestCase(TCSEntity):
     """
     用例：异步上传目录
     """
