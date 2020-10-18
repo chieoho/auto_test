@@ -17,7 +17,7 @@ class TCRepo(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def save(self, testcase: dict) -> bool:
+    def save(self, testcase: dict) -> int:
         pass
 
     @abstractmethod
