@@ -9,17 +9,17 @@ from dataclasses import dataclass
 from enum import Enum
 
 
+@dataclass
 class TCSEntity(object):
     """
     testcase script entity
     """
-    def __init__(self, precondition, body, restore_env):
-        self.precondition = precondition
-        self.body = body
-        self.restore_env = restore_env
-        self.prepare_res = False
-        self.tcs_run_res = False
-        self.restore_env_res = False
+    precondition: callable = lambda: False
+    body: callable = lambda: False
+    restore_env: callable = lambda: False
+    prepare_res: bool = False
+    tcs_run_res: bool = False
+    restore_env_res: bool = False
 
     def run(self):
         """
@@ -45,7 +45,7 @@ class TCEntity(object):
     """
     testcase entity
     """
-    case_script: TCSEntity
+    case_script: TCSEntity = TCSEntity()
     test_products: str = ''
     priority: int = 3
     case_title: str = ''
