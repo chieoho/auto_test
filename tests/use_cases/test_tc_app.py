@@ -6,7 +6,7 @@
 @time: 2020/10/16 15:27
 """
 from auto_test.use_cases.tc_app import TCApp
-from auto_test.use_cases.interfaces.output_port_if import TCRepoIf
+from auto_test.use_cases.interfaces.repository_if import TCRepoIf
 
 
 class TCRepoImp(TCRepoIf):

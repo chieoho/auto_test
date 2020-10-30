@@ -7,7 +7,7 @@
 """
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, PickleType
-from auto_test.use_cases.interfaces.output_port_if import TCRepoIf
+from auto_test.use_cases.interfaces.repository_if import TCRepoIf
 
 
 Base = declarative_base()

@@ -3,19 +3,15 @@
 @file: output_port_if.py
 @desc:
 @author: Jaden Wu
-@time: 2020/10/22 16:26
+@time: 2020/10/27 15:51
 """
 from abc import ABCMeta, abstractmethod
 
 
-class TCRepoIf(metaclass=ABCMeta):
-    """
-    testcase output port interface
-    """
+class TCPresenter(metaclass=ABCMeta):
     @abstractmethod
-    def save(self, testcase: dict) -> int:
+    def add_tc(self):
         """
-        存储用例
-        :param testcase:
+        增加测试用例的返回结果展示
         :return:
         """

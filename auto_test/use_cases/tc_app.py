@@ -7,15 +7,17 @@
 """
 from auto_test.entities.tc_entity import TCSEntity, TCEntity
 from auto_test.use_cases.interfaces.input_port_if import TCAppIf
-from auto_test.use_cases.interfaces.output_port_if import TCRepoIf
+from auto_test.use_cases.interfaces.repository_if import TCRepoIf
+from auto_test.use_cases.interfaces.output_port_if import TCPresenter
 
 
 class TCApp(TCAppIf):
     """
     testcase use_cases
     """
-    def __init__(self, tc_repo: TCRepoIf):
+    def __init__(self, tc_repo: TCRepoIf, tc_pres: TCPresenter):
         self.tc_repo = tc_repo
+        self.tc_pres = tc_pres
 
     def add_testcase(
             self,

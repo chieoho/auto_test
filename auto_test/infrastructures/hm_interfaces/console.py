@@ -18,6 +18,7 @@ class Console(object):
     add_tc 添加测试用例
     exe_tc 执行用例
 
+    help 帮助
     exit或quit 退出
     """
     def __init__(self):
