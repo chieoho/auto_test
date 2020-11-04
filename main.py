@@ -5,12 +5,12 @@
 @author: Jaden Wu
 @time: 2020/9/28 10:47
 """
-from auto_test.infrastructures.hm_interfaces.console import Console as Interaction
+from auto_test.infrastructures.hm_interfaces.console import Console as Controller
 
 
 def main():
-    interaction = Interaction()
-    interaction.run()
+    controller = Controller()
+    controller.run()
 
 
 if __name__ == '__main__':

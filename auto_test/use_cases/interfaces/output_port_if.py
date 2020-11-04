@@ -8,10 +8,10 @@
 from abc import ABCMeta, abstractmethod
 
 
-class TCPresenter(metaclass=ABCMeta):
+class PresenterIf(metaclass=ABCMeta):
     @abstractmethod
-    def add_tc(self):
+    def set_tc_info(self, tc_info):
         """
-        增加测试用例的返回结果展示
+        设置用例信息为可展示格式
         :return:
         """

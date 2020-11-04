@@ -8,16 +8,16 @@
 from auto_test.entities.tc_entity import TCSEntity, TCEntity
 from auto_test.use_cases.interfaces.input_port_if import TCAppIf
 from auto_test.use_cases.interfaces.repository_if import TCRepoIf
-from auto_test.use_cases.interfaces.output_port_if import TCPresenter
+from auto_test.use_cases.interfaces.output_port_if import PresenterIf
 
 
 class TCApp(TCAppIf):
     """
     testcase use_cases
     """
-    def __init__(self, tc_repo: TCRepoIf, tc_pres: TCPresenter):
+    def __init__(self, tc_repo: TCRepoIf, pres: PresenterIf):
         self.tc_repo = tc_repo
-        self.tc_pres = tc_pres
+        self.presenter = pres
 
     def add_testcase(
             self,
@@ -34,4 +34,5 @@ class TCApp(TCAppIf):
             'priority': testcase.priority
         }
         tc_id = self.tc_repo.save(tc_info_out)
+        self.presenter.set_tc_info(tc_info_out)
         return isinstance(tc_id, int)

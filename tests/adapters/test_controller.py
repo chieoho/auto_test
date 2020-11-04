@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-@file: test_interaction.py
+@file: test_controller.py
 @desc:
 @author: Jaden Wu
 @time: 2020/10/16 17:06
 """
 import os
-from auto_test.adapters.interaction import TCInteraction, TCAppIf
+from auto_test.adapters.controller import Controller, TCAppIf
 
 tc_info_test = {
     'tcs_path': os.path.abspath(__file__ + '/../../infrastructures/testcase_scripts/tc_for_unittest_001.py')
@@ -24,7 +24,7 @@ class TCApp(TCAppIf):
         return True
 
 
-tc_interaction = TCInteraction(TCApp())
+tc_interaction = Controller(TCApp())
 
 
 def test_tcs_path_to_tc_parts():

@@ -7,7 +7,7 @@
 """
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-from auto_test.adapters.sql.tc_repo import TCRepoImp, Base
+from auto_test.adapters.sql.tc_repo import TCRepo, Base
 
 
 def test_sql_save():
@@ -15,6 +15,6 @@ def test_sql_save():
     Base.metadata.create_all(engine)
     session_factory = sessionmaker(bind=engine)
     session_obj = scoped_session(session_factory)
-    tc_repo = TCRepoImp(session_obj())
+    tc_repo = TCRepo(session_obj())
     tc_id = tc_repo.save({'priority': 3})
     assert tc_id == 1

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-@file: interaction.py
+@file: controller.py
 @desc:
 @author: Jaden Wu
-@time: 2020/10/22 16:29
+@time: 2020/11/4 11:07
 """
 import os
 import importlib.util
@@ -13,10 +13,7 @@ from auto_test.adapters.interfaces.tcs_if import TCSBase
 from auto_test.use_cases.interfaces.input_port_if import TCAppIf
 
 
-class TCInteraction(object):
-    """
-    testcase interaction
-    """
+class Controller(object):
     def __init__(self, tc_app: TCAppIf):
         self.tc_app = tc_app
 

@@ -30,7 +30,7 @@ class TCModel(Base):
     extension = Column(PickleType)
 
 
-class TCRepoImp(TCRepoIf):
+class TCRepo(TCRepoIf):
     def __init__(self, session):
         self.model = TCModel
         self.session = session
@@ -53,5 +53,5 @@ if __name__ == '__main__':
     session_factory = sessionmaker(bind=engine)
     Session = scoped_session(session_factory)
 
-    tc_repo = TCRepoImp(Session())
+    tc_repo = TCRepo(Session())
     print(tc_repo.save({'priority': 3}))
