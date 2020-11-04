@@ -10,7 +10,7 @@ from auto_test.adapters.controller import Controller
 from auto_test.adapters.presenter import Presenter, ViewModel
 from auto_test.use_cases.tc_app import TCApp
 from auto_test.adapters.sql.tc_repo import TCRepo
-from auto_test.infrastructures.databases import init_db
+from auto_test.infrastructures.databases.setting import init_db
 
 
 class View(object):
